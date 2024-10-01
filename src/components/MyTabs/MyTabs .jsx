@@ -1,5 +1,3 @@
-/* eslint-disable import/order */
-
 import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
 
@@ -27,7 +25,6 @@ const MyTabs = () => {
       const getToken = async () => {
         const token = await service.createGuestSession();
         setGuestSessionId(token);
-        console.log('Generated Guest Session ID:', token);
       };
 
       getToken();
@@ -38,8 +35,6 @@ const MyTabs = () => {
 
   const handleTabChange = (key) => {
     setActiveTab(key);
-
-    // Set the guest session ID if switching to the 'Rated' tab
     if (key === 'rated' && !guestSessionId) {
       console.error('guest session ID is not set');
     }
@@ -55,8 +50,7 @@ const MyTabs = () => {
           {guestSessionId ? (
             <RatedMovies key={activeTab} guestSessionId={guestSessionId} />
           ) : (
-            <div>Loading...</div>
-            // display a loading indicator here
+            <div>Loading...</div>сщ
           )}
         </TabPane>
       </Tabs>

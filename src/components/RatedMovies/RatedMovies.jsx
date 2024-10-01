@@ -25,10 +25,8 @@ const RatedMovies = () => {
   const ganresList = useContext(Context);
   const isMobile = useMediaQuery({ maxWidth: 420 });
   const service = new Service();
-  // const [guestSessionId, setGuestSessionId] = useState('')
 
   const guestSessionId = localStorage.getItem('sessionId');
-  //   const myRating = localStorage.getItem('myRating');
 
   useEffect(() => {
     const rated = async () => {
@@ -125,7 +123,6 @@ const RatedMovies = () => {
           <Pagination
             total={total}
             pageSize={20}
-            // onChange={onChangePage}
             showSizeChanger={false}
             className="pagination"
           />

@@ -5,7 +5,6 @@ import { debounce } from 'lodash';
 import { format } from 'date-fns';
 
 import '../CardList/CardList.css';
-// import PropTypes from 'prop-types';
 import { Context } from '../../App';
 import Service from '../Api';
 
@@ -21,37 +20,15 @@ const truncateText = (text, maxLength) => {
 
 const CardList = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false); // Добавляем состояние для индикатора загрузки
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(false);
   const [total, setTotal] = useState(0);
   const [inputValue, setInputValue] = useState('');
-  // const [guestSessionId] = useState('');
   const ganresList = useContext(Context);
   const isMobile = useMediaQuery({ maxWidth: 420 });
-  // const apiKey = '7e14147cbafc9f8e4f095ea26ebf8692';
   const service = new Service();
-  console.log(service);
 
   useEffect(() => {
-    // const searchMovies = async () => {
-    //   try {
-    //     setLoading(true);
-    //     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&page=1&per_page=6`);
-    //     setLoading(false);
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       setMovies(data.results);
-    //       console.log(data.results);
-    //       setTotal(data.total_results);
-    //       console.log(data.total_results);
-    //     } else {
-    //       console.error('Failed to fetch movies');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error fetching movies:', error);
-    //   }
-    // };
-    // searchMovies();
   }, []);
 
   const handleSearch = debounce(async (value) => {
@@ -59,7 +36,6 @@ const CardList = () => {
     setMovies(debouncedSearch.results);
     setTotal(debouncedSearch.total_results);
     setInputValue(value);
-    console.log(value);
   }, 2000);
 
   const onChangePage = async (page) => {
